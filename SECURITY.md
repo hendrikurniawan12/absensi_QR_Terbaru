@@ -8,5 +8,3 @@
 | < 1.5.0 | :x:                |
 
 ## Reporting a Vulnerability
-
-Just [create new issue](https://github.com/ikhsan3adi/absensi-sekolah-qr-code/issues).
