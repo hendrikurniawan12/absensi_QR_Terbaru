@@ -1,4 +1,5 @@
 <?php
+// ini fingsi buat dasherize
 
 namespace App\Controllers\Admin;
 
