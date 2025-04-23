@@ -154,25 +154,59 @@
 
       console.log(form);
 
+      // jQuery.ajax({
+      //    url: ",
+      //    type: 'post',
+      //    data: form,
+      //    success: function(response, status, xhr) {
+      //       // console.log(status);
+
+      //       if (response['status']) {
+      //          getSiswa(lastIdKelas, lastKelas);
+      //          alert('Berhasil ubah kehadiran : ' + response['nama_siswa']);
+      //       } else {
+      //          alert('Gagal ubah kehadiran : ' + response['nama_siswa']);
+      //       }
+      //    },
+      //    error: function(xhr, status, thrown) {
+      //       console.log(thrown);
+      //       alert('Gagal ubah kehadiran\n' + thrown);
+      //    }
+      // });
       jQuery.ajax({
          url: "<?= base_url('/admin/absen-siswa/edit'); ?>",
          type: 'post',
          data: form,
          success: function(response, status, xhr) {
-            // console.log(status);
-
             if (response['status']) {
                getSiswa(lastIdKelas, lastKelas);
-               alert('Berhasil ubah kehadiran : ' + response['nama_siswa']);
+               $('#ubahModal').modal('hide'); // Tutup modal kalau berhasil
+
+               Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil!',
+                  text: 'Kehadiran ' + response['nama_siswa'] + ' berhasil diubah.',
+                  timer: 2000,
+                  showConfirmButton: false
+               });
             } else {
-               alert('Gagal ubah kehadiran : ' + response['nama_siswa']);
+               Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal!',
+                  text: 'Kehadiran ' + response['nama_siswa'] + ' gagal diubah.'
+               });
             }
          },
          error: function(xhr, status, thrown) {
             console.log(thrown);
-            alert('Gagal ubah kehadiran\n' + thrown);
+            Swal.fire({
+               icon: 'error',
+               title: 'Terjadi Kesalahan!',
+               text: 'Gagal mengubah kehadiran: ' + thrown
+            });
          }
       });
+
    }
 </script>
 <?= $this->endSection() ?>

@@ -4,6 +4,9 @@
 <?= $this->include('templates/head') ?>
 
 <body>
+   <!-- SweetAlert2 -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
    <div>
       <?= $this->include('templates/sidebar') ?>
       <div class="main-panel">
